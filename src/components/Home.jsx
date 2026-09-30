@@ -12,7 +12,7 @@ const features = [
 export default function Home() {
   return (
     <div className="container">
-      <div style={{ textAlign: 'center', marginBottom: '40px', marginTop: '20px' }>
+      <div style={{ textAlign: 'center', marginBottom: '40px', marginTop: '20px' }}>
         <h1 style={{ fontSize: '36px', fontWeight: '700', marginBottom: '8px', color: '#333' }}>Tundra21</h1>
         <p style={{ fontSize: '16px', color: '#666' }}>Tu app de productividad personal</p>
       </div>

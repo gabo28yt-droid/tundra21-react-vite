@@ -49,13 +49,13 @@ export default function CalendarView() {
 
       <div className="card" style={{ marginBottom: '20px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-          <button onClick={prevMonth} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+          <button onClick={prevMonth} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
             <ChevronLeft size={24} />
           </button>
           <h2 style={{ fontSize: '18px', fontWeight: '600' }}>
             {MONTHS[currentDate.getMonth()]} {currentDate.getFullYear()}
           </h2>
-          <button onClick={nextMonth} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+          <button onClick={nextMonth} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
             <ChevronRight size={24} />
           </button>
         </div>

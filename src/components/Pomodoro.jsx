@@ -6,8 +6,6 @@ export default function Pomodoro() {
   const [isRunning, setIsRunning] = useState(false)
   const [isBreak, setIsBreak] = useState(false)
   const [sessions, setSessions] = useState(0)
-  const [focusTime, setFocusTime] = useState(2)
-  const [breakTime, setBreakTime] = useState(0.5)
 
   useEffect(() => {
     let interval
@@ -17,7 +15,7 @@ export default function Pomodoro() {
           if (prev <= 1) {
             setIsRunning(false)
             if (!isBreak) {
-              setSessions(sessions + 1)
+              setSessions(s => s + 1)
             }
             setIsBreak(!isBreak)
             return isBreak ? 25 * 60 : 5 * 60
@@ -27,7 +25,7 @@ export default function Pomodoro() {
       }, 1000)
     }
     return () => clearInterval(interval)
-  }, [isRunning, isBreak, sessions])
+  }, [isRunning, isBreak])
 
   const minutes = Math.floor(timeLeft / 60)
   const seconds = timeLeft % 60
@@ -47,7 +45,7 @@ export default function Pomodoro() {
 
       <div style={{ display: 'flex', gap: '12px', marginBottom: '20px' }}>
         <button
-          onClick={() => setIsBreak(false)}
+          onClick={() => { setIsBreak(false); setTimeLeft(25 * 60) }}
           className="btn"
           style={{
             flex: 1,
@@ -58,7 +56,7 @@ export default function Pomodoro() {
           Focus
         </button>
         <button
-          onClick={() => setIsBreak(true)}
+          onClick={() => { setIsBreak(true); setTimeLeft(5 * 60) }}
           className="btn"
           style={{
             flex: 1,
@@ -94,7 +92,7 @@ export default function Pomodoro() {
         <div style={{ fontSize: '14px', color: '#999' }}>Stay focused! ❤️</div>
         
         <div style={{ marginTop: '20px', fontSize: '12px', color: '#999' }}>
-          Session 1 of 4
+          Session {sessions + 1} of 4
         </div>
       </div>
 
@@ -102,14 +100,14 @@ export default function Pomodoro() {
         <button
           onClick={() => setIsRunning(!isRunning)}
           className="btn btn-primary"
-          style={{ borderRadius: '50%', width: '56px', height: '56px', padding: 0, justifyContent: 'center' }}
+          style={{ borderRadius: '50%', width: '56px', height: '56px', padding: 0 }}
         >
           {isRunning ? <Pause size={24} /> : <Play size={24} />}
         </button>
         <button
           onClick={resetTimer}
           className="btn btn-secondary"
-          style={{ borderRadius: '50%', width: '56px', height: '56px', padding: 0, justifyContent: 'center' }}
+          style={{ borderRadius: '50%', width: '56px', height: '56px', padding: 0 }}
         >
           <RotateCcw size={24} />
         </button>

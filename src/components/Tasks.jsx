@@ -61,23 +61,13 @@ export default function Tasks() {
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
           placeholder="Nueva tarea..."
-          style={{
-            width: '100%',
-            padding: '12px',
-            borderRadius: '8px',
-            border: '1px solid #e0e0e0',
-            marginBottom: '10px',
-            fontSize: '14px'
-          }}
           onKeyPress={(e) => e.key === 'Enter' && addTask()}
         />
-        <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
-          <select value={selectedPriority} onChange={(e) => setSelectedPriority(e.target.value)}
-            style={{ flex: 1, padding: '8px', borderRadius: '8px', border: '1px solid #e0e0e0' }}>
+        <div style={{ display: 'flex', gap: '10px', marginTop: '10px', marginBottom: '10px' }}>
+          <select value={selectedPriority} onChange={(e) => setSelectedPriority(e.target.value)}>
             {Object.keys(PRIORITY_LEVELS).map(p => <option key={p} value={p}>{p} prioridad</option>)}
           </select>
-          <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}
-            style={{ flex: 1, padding: '8px', borderRadius: '8px', border: '1px solid #e0e0e0' }}>
+          <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
             {TASK_CATEGORIES.map(c => <option key={c.name} value={c.name}>{c.name}</option>)}
           </select>
         </div>
@@ -86,7 +76,7 @@ export default function Tasks() {
         </button>
       </div>
 
-      {(['Alta', 'Media', 'Baja']).map(priority => (
+      {['Alta', 'Media', 'Baja'].map(priority => (
         <div key={priority}>
           <h3 style={{ color: PRIORITY_LEVELS[priority].color, marginTop: '16px', marginBottom: '12px', fontSize: '14px', fontWeight: '600', textTransform: 'uppercase' }}>
             {priority} prioridad
@@ -97,7 +87,7 @@ export default function Tasks() {
                 type="checkbox"
                 checked={task.completed}
                 onChange={() => toggleTask(task.id)}
-                style={{ width: '20px', height: '20px', cursor: 'pointer' }}
+                style={{ width: '20px', height: '20px', cursor: 'pointer', flexShrink: 0 }}
               />
               <div style={{ flex: 1 }}>
                 <div style={{
@@ -115,9 +105,10 @@ export default function Tasks() {
                 width: '12px',
                 height: '12px',
                 borderRadius: '50%',
-                background: TASK_CATEGORIES.find(c => c.name === task.category)?.color
+                background: TASK_CATEGORIES.find(c => c.name === task.category)?.color,
+                flexShrink: 0
               }} />
-              <button onClick={() => deleteTask(task.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#999' }}>
+              <button onClick={() => deleteTask(task.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#999', padding: 0 }}>
                 <Trash2 size={16} />
               </button>
             </div>

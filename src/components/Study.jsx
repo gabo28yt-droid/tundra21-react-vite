@@ -88,14 +88,14 @@ export default function Study() {
                 value={newDocument.title}
                 onChange={(e) => setNewDocument({ ...newDocument, title: e.target.value })}
                 placeholder="Título del documento"
-                style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #e0e0e0', marginBottom: '10px' }}
+                style={{ marginBottom: '10px' }}
               />
               <input
                 type="text"
                 value={newDocument.subject}
                 onChange={(e) => setNewDocument({ ...newDocument, subject: e.target.value })}
                 placeholder="Materia"
-                style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #e0e0e0', marginBottom: '10px' }}
+                style={{ marginBottom: '10px' }}
               />
               <div style={{ display: 'flex', gap: '10px' }}>
                 <button onClick={addDocument} className="btn btn-primary" style={{ flex: 1 }}>Subir</button>
@@ -106,7 +106,7 @@ export default function Study() {
           {documents.map(doc => (
             <div key={doc.id} className="card" style={{ marginBottom: '12px' }}>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                <BookOpen size={24} color="#7c3aed" />
+                <BookOpen size={24} color="#7c3aed" style={{ flexShrink: 0 }} />
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: '600', marginBottom: '4px' }}>{doc.title}</div>
                   <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>
@@ -127,7 +127,7 @@ export default function Study() {
                     </span>
                   </div>
                 </div>
-                <button onClick={() => deleteDocument(doc.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#999' }}>
+                <button onClick={() => deleteDocument(doc.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#999', padding: 0, flexShrink: 0 }}>
                   <Trash2 size={16} />
                 </button>
               </div>
@@ -157,7 +157,8 @@ export default function Study() {
                 justifyContent: 'center',
                 transition: 'all 0.3s ease',
                 textAlign: 'center',
-                padding: '20px'
+                padding: '20px',
+                position: 'relative'
               }}
             >
               <div>
@@ -182,7 +183,8 @@ export default function Study() {
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  color: flippedCard === card.id ? 'white' : '#999'
+                  color: flippedCard === card.id ? 'white' : '#999',
+                  padding: 0
                 }}
               >
                 <Trash2 size={16} />

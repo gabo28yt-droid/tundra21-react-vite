@@ -5,7 +5,7 @@ const EXPENSE_CATEGORIES = [
   { name: 'Salary', amount: 5000, color: '#4f46e5', icon: '💰' },
   { name: 'Medicine', amount: 2680, color: '#ef4444', icon: '💊' },
   { name: 'Restaurant', amount: 2680, color: '#f97316', icon: '🍽️' },
-  { name: 'Cloth', amount: 2680, color: '#a855f7', icon: '👗' },
+  { name: 'Cloth', amount: 2680, color: '#a855f7', icon: '👕' },
   { name: 'Fuel', amount: 0, color: '#06b6d4', icon: '⛽' }
 ]
 
@@ -74,7 +74,6 @@ export default function Finance() {
           <select
             value={newExpense.category}
             onChange={(e) => setNewExpense({ ...newExpense, category: e.target.value })}
-            style={{ padding: '8px', borderRadius: '8px', border: '1px solid #e0e0e0' }}
           >
             {expenses.map(e => <option key={e.name} value={e.name}>{e.name}</option>)}
           </select>
@@ -83,7 +82,6 @@ export default function Finance() {
             value={newExpense.amount}
             onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })}
             placeholder="Amount"
-            style={{ padding: '8px', borderRadius: '8px', border: '1px solid #e0e0e0' }}
           />
         </div>
         <button onClick={addExpense} className="btn btn-primary" style={{ width: '100%' }}>
@@ -103,7 +101,8 @@ export default function Finance() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '20px'
+            fontSize: '20px',
+            flexShrink: 0
           }}>
             {exp.icon}
           </div>
